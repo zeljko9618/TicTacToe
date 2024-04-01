@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class TicTacToe {
 
+    static boolean validMove = false;
+
     public static void main(String[] args) {
         // Gerüst aufstellen
         char[][] playBoard = new char[][] {
@@ -23,22 +25,37 @@ public class TicTacToe {
             Scanner scanner = new Scanner(System.in);
 
             // Spieler X
-            System.out.println("Enter position of X (1 - 9): ");
-            int xPos = scanner.nextInt();
-            xPlay(playBoard, xPos, "X");
+            // validbool = false
+            // Schleife unten setzen um x bzw o spieler
 
+            validMove = false;
+            while(!validMove) {
+                System.out.println("Enter position of X (1 - 9): ");
+                int xPos = scanner.nextInt();
+                xPlay(playBoard, xPos, "X");
+            }
             // Spieler O
-            System.out.println("Enter position of O (1 - 9): ");
-            int oPos = scanner.nextInt();
-            oPlay(playBoard, oPos, "O");
+            // Schleife unten setzen um x bzw o spieler
+            validMove = false;
+            while(!validMove) {
+                System.out.println("Enter position of O (1 - 9): ");
+                int oPos = scanner.nextInt();
+                oPlay(playBoard, oPos, "O");
+            }
+
         }
     }
 
     public static void xPlay(char[][] playBoard, int xPos, String player) {
         switch (xPos) {
             case 1:
-                playBoard[0][0] = 'X';
+                // check used methode
+                if(playBoard[0][0] == 'X' || playBoard[0][0] == 'O' ) {
+                    playBoard[0][0] = 'X';
+                    validMove = true;
+                }
                 break;
+                // Cases anpassen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             case 2:
                 playBoard[0][2] = 'X';
                 break;
@@ -123,7 +140,6 @@ public class TicTacToe {
         String nameO = scanner.nextLine();
         System.out.println("Das Spiel beginnt!");
     }
-    public static void checkWinner() {
 
-    }
+    // Methode: checkWinner();
 }
